@@ -69,6 +69,8 @@ const eslintConfig = [
       "next-env.d.ts",
       "node_modules/**",
       ".open-next/**",
+      ".alchemy/**",
+      "src/generated/**",
     ],
   },
 ]
