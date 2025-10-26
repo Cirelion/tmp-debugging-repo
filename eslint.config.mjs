@@ -1,69 +1,76 @@
-import { FlatCompat } from '@eslint/eslintrc';
-import prettier from 'eslint-plugin-prettier';
-import simpleImportSort from 'eslint-plugin-simple-import-sort';
-import unusedImports from 'eslint-plugin-unused-imports';
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
+import { FlatCompat } from "@eslint/eslintrc"
+import prettier from "eslint-plugin-prettier"
+import simpleImportSort from "eslint-plugin-simple-import-sort"
+import unusedImports from "eslint-plugin-unused-imports"
+import { dirname } from "path"
+import { fileURLToPath } from "url"
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 const compat = new FlatCompat({
   baseDirectory: __dirname,
-});
+})
 
 const eslintConfig = [
-  ...compat.extends('next/core-web-vitals', 'next/typescript'),
+  ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
     plugins: {
-      'simple-import-sort': simpleImportSort,
-      'unused-imports': unusedImports,
+      "simple-import-sort": simpleImportSort,
+      "unused-imports": unusedImports,
       prettier: prettier,
     },
     rules: {
       // Prettier integration
-      'prettier/prettier': 'error',
+      "prettier/prettier": "error",
 
       // Import sorting
-      'simple-import-sort/imports': [
-        'error',
+      "simple-import-sort/imports": [
+        "error",
         {
           groups: [
             // React imports first
-            ['^react', '^next'],
+            ["^react", "^next"],
             // External packages
-            ['^@?\\w'],
+            ["^@?\\w"],
             // Internal packages (with @/ alias)
-            ['^@/'],
+            ["^@/"],
             // Parent imports, then relative imports
-            ['^\\.\\.(?!/?$)', '^\\.\\./?$', '^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
+            ["^\\.\\.(?!/?$)", "^\\.\\./?$", "^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
             // Style imports
-            ['^.+\\.s?css$'],
+            ["^.+\\.s?css$"],
           ],
         },
       ],
-      'simple-import-sort/exports': 'error',
+      "simple-import-sort/exports": "error",
 
       // Unused imports
-      'unused-imports/no-unused-imports': 'error',
-      'unused-imports/no-unused-vars': [
-        'warn',
+      "unused-imports/no-unused-imports": "error",
+      "unused-imports/no-unused-vars": [
+        "warn",
         {
-          vars: 'all',
-          varsIgnorePattern: '^_',
-          args: 'after-used',
-          argsIgnorePattern: '^_',
+          vars: "all",
+          varsIgnorePattern: "^_",
+          args: "after-used",
+          argsIgnorePattern: "^_",
         },
       ],
 
       // TypeScript strict rules
-      '@typescript-eslint/no-explicit-any': 'error',
-      '@typescript-eslint/no-unused-vars': 'off', // Handled by unused-imports
+      "@typescript-eslint/no-explicit-any": "error",
+      "@typescript-eslint/no-unused-vars": "off", // Handled by unused-imports
     },
   },
   {
-    ignores: ['.next/**', 'out/**', 'build/**', 'next-env.d.ts', 'node_modules/**'],
+    ignores: [
+      ".next/**",
+      "out/**",
+      "build/**",
+      "next-env.d.ts",
+      "node_modules/**",
+      ".open-next/**",
+    ],
   },
-];
+]
 
-export default eslintConfig;
+export default eslintConfig

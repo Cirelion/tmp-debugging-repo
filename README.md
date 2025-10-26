@@ -85,6 +85,7 @@ bun run format:check # Check formatting
 ### Pre-commit Hooks
 
 Git hooks automatically run on every commit to:
+
 - Fix ESLint errors
 - Format code with Prettier
 - Remove unused imports

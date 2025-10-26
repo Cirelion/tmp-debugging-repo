@@ -2,7 +2,7 @@ const Home = () => (
   <main className="container">
     <h1>Welcome to Next.js on Cloudflare Workers!</h1>
     <p>
-      This is a Next.js application deployed to Cloudflare Workers using{' '}
+      This is a Next.js application deployed to Cloudflare Workers using{" "}
       <a href="https://alchemy.run" target="_blank" rel="noopener noreferrer">
         Alchemy
       </a>
@@ -30,17 +30,17 @@ const Home = () => (
 
     <footer>
       <p>
-        Learn more:{' '}
+        Learn more:{" "}
         <a href="https://nextjs.org/docs" target="_blank" rel="noopener noreferrer">
           Next.js Docs
-        </a>{' '}
-        |{' '}
+        </a>{" "}
+        |{" "}
         <a href="https://alchemy.run" target="_blank" rel="noopener noreferrer">
           Alchemy Docs
         </a>
       </p>
     </footer>
   </main>
-);
+)
 
-export default Home;
+export default Home

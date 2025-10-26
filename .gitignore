@@ -50,3 +50,6 @@ CLAUDE.md
 
 # IDE
 .idea
+
+# Prisma
+node_modules/.prisma/
