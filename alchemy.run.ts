@@ -1,9 +1,9 @@
-import alchemy from "alchemy";
-import { Nextjs } from "alchemy/cloudflare";
+import alchemy from 'alchemy';
+import { Nextjs } from 'alchemy/cloudflare';
 
-const app = await alchemy("Unstability");
+const app = await alchemy('unstability');
 
-export const worker = await Nextjs("website", {
+export const worker = await Nextjs('website', {
   name: `${app.name}-${app.stage}-website`,
 });
 

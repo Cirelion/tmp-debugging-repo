@@ -44,3 +44,9 @@ wrangler.jsonc
 
 # opennext
 .open-next/
+
+# claude
+CLAUDE.md
+
+# IDE
+.idea
