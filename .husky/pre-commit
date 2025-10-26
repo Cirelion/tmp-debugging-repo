@@ -1,1 +1,6 @@
-bunx lint-staged
+#!/bin/sh
+export BUN_INSTALL_DIR="$HOME/.bun"
+export PATH="$BUN_INSTALL_DIR/bin:$PATH"
+
+bun lint
+bun ts-lint

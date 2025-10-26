@@ -8,6 +8,7 @@
     "destroy": "alchemy destroy",
     "dev": "alchemy dev",
     "lint": "eslint .",
+    "ts-lint": "tsc --noEmit",
     "lint:fix": "eslint --fix .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
@@ -42,6 +43,7 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx,mjs}": [
       "eslint --fix",
+      "tsc --noEmit",
       "prettier --write"
     ],
     "*.{json,md,css,scss}": [
