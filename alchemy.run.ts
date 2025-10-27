@@ -54,6 +54,11 @@ await Exec("DrizzleMigrate", {
     patterns: ["drizzle.config.ts", "drizzle/*.sql"],
   },
 })
+import { Secret } from "alchemy/cloudflare"
+
+const RunwareAPIKey = await Secret("runware-api-key", {
+  value: alchemy.secret(process.env.RUNWARE_API_KEY),
+})
 
 // Next.js Worker with all bindings
 export const worker = await Nextjs("website", {
@@ -76,6 +81,8 @@ export const worker = await Nextjs("website", {
     DISCORD_CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET!,
     GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID!,
     GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET!,
+
+    RUNWARE_API_KEY: RunwareAPIKey,
   },
 })
 

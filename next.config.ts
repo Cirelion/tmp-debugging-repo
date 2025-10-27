@@ -4,6 +4,16 @@ import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare"
 
 initOpenNextCloudflareForDev()
 
-const nextConfig: NextConfig = {}
+const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "im.runware.ai",
+        pathname: "/image/**",
+      },
+    ],
+  },
+}
 
 export default nextConfig
