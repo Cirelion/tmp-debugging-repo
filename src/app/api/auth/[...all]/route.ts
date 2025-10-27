@@ -1,19 +1,27 @@
 import { toNextJsHandler } from "better-auth/next-js"
 
-import { auth } from "@/lib/auth"
+import { getAuth } from "@/lib/auth"
 
 /**
  * Better Auth API route handler
  * Handles all authentication endpoints: /api/auth/*
  *
+ * The auth instance is created per-request to access Cloudflare Worker bindings
+ * (JWT_SECRET, OAuth credentials, etc.) which are only available at request time.
+ *
  * Endpoints include:
- * - POST /api/auth/sign-in/email - Email/password sign in
- * - POST /api/auth/sign-up/email - Email/password sign up
+ * - POST /api/auth/sign-in/social - Social OAuth login
  * - POST /api/auth/sign-out - Sign out
  * - GET /api/auth/session - Get current session
- * - POST /api/auth/forget-password - Request password reset
- * - POST /api/auth/reset-password - Reset password
- * - GET /api/auth/callback/github - GitHub OAuth callback
+ * - GET /api/auth/callback/discord - Discord OAuth callback
  * - GET /api/auth/callback/google - Google OAuth callback
  */
-export const { GET, POST } = toNextJsHandler(auth.handler)
+export async function GET(request: Request) {
+  const auth = await getAuth()
+  return toNextJsHandler(auth.handler).GET(request)
+}
+
+export async function POST(request: Request) {
+  const auth = await getAuth()
+  return toNextJsHandler(auth.handler).POST(request)
+}

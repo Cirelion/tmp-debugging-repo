@@ -1,7 +1,7 @@
 import { headers } from "next/headers"
 import Link from "next/link"
 
-import { auth } from "@/lib/auth"
+import { getAuth } from "@/lib/auth"
 
 import { SignOutButton } from "./sign-out-button"
 
@@ -13,6 +13,7 @@ import "./header.css"
  * Shows Login link if logged out
  */
 export async function Header() {
+  const auth = await getAuth()
   const session = await auth.api.getSession({
     headers: await headers(),
   })

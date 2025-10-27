@@ -67,6 +67,7 @@ const eslintConfig = [
       "out/**",
       "build/**",
       "next-env.d.ts",
+      "worker-configuration.d.ts",
       "node_modules/**",
       ".open-next/**",
       ".alchemy/**",
